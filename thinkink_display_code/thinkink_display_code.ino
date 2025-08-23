@@ -24,23 +24,23 @@ void loop() {
   display.clearBuffer();
   display.setTextSize(3);
   display.setCursor(20, 20);
-  display.println("Insert City");
+  display.println("Insert City"); //Displays City 
 
   display.setTextSize(4);
   display.setCursor(20, 80);
-  display.print("22");
-  display.drawCircle(display.getCursorX() , display.getCursorY() - 3, 3, EPD_BLACK);
+  display.print("22"); //Displays temperature
+  display.drawCircle(display.getCursorX() , display.getCursorY() - 3, 3, EPD_BLACK); // This line is to display degree symbol
   display.println(" C");
 
   display.setTextSize(2);
   display.setCursor(20, 140);
-  display.println("Humidity: 60%");
+  display.println("Humidity: 60%"); //Displays humidity
   display.setCursor(20, 170);
   display.println("Clear");
 
   display.setTextSize(1);
   display.setCursor(20, 210);
-  display.println("Updated: 10:15 AM");
+  display.println("Updated: 10:15 AM"); //Displays when the above values were last updated
 
   display.display();
   delay(10000);
