@@ -1,5 +1,8 @@
-
+#include <WiFi.h>
 #include "Adafruit_ThinkInk.h"
+
+const char* ssid = "Mr. Spooch";
+const char* password = "Bacon9097famous2";
 
 #define EPD_DC 33
 #define EPD_CS 15
@@ -42,7 +45,12 @@ void loop() {
   display.setCursor(20, 210);
   display.println("Updated: 10:15 AM"); //Displays when the above values were last updated
 
+  display.setTextSize(1);
+  display.setCursor(display.getCursorX() + 300, 210);
+  display.println("WiFi connected");
+
   display.display();
   delay(10000);
+
 
 }
