@@ -1,8 +1,6 @@
-#include <WiFi.h>
+
 #include "Adafruit_ThinkInk.h"
 
-const char* ssid = "Mr. Spooch";
-const char* password = "Bacon9097famous2";
 
 #define EPD_DC 33
 #define EPD_CS 15
