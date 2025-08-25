@@ -1,7 +1,15 @@
 #include <WiFi.h>
+#include<HTTPClient.h>
 
-const char* ssid = "wifi name";
-const char* password = "wifi password";
+const char* ssid = ":)";
+const char* password = ";)";
+
+String apiKey = "4ee3315c56c51d147c7904087b06f12d";
+String latitude = "45.5202";
+String longitude = "-122.6742";
+
+String serverPath = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey + "&units=metric";
+
 
 void setup() {
   Serial.begin(115200);
@@ -22,6 +30,22 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+ if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
+
+    http.begin(serverPath.c_str()); // start connection to OpenWeatherMap URL
+    int httpResponseCode = http.GET(); //Sends a get request. 200 = OK, negtive = error
+
+    if (httpResponseCode > 0) {
+      String payload = http.getString(); // stores JSON response
+      Serial.println("Response:");
+      Serial.println(payload);  // prints raw JSON
+    } else {
+      Serial.print("Error code: "); //If request failed print error message
+      Serial.println(httpResponseCode);
+    }
+    http.end(); //Releases HUZZAH32's RAM reserved for http call
+  }
+  delay(60000); // wait 1 min before next request
 
 }
