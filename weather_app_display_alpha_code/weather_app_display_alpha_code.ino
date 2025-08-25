@@ -1,8 +1,16 @@
 #include <WiFi.h>
 #include "Adafruit_ThinkInk.h"
+#include<HTTPClient.h>
 
-const char* ssid = "WiFi name";
-const char* password = "WiFi password";
+const char* ssid = "SSID";
+const char* password = "PASSWORD";
+
+String apiKey = "APIKEY";
+String latitude = "CITY_LATITUDE";
+String longitude = "CITY_LONGITUDE";
+
+String serverPath = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey + "&units=metric";
+
 
 #define EPD_DC 33
 #define EPD_CS 15
@@ -38,6 +46,27 @@ void setup() {
 }
 
 void loop() {
+
+//----------Obtains Weather Info from openweathermap-----------------------------
+ if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
+
+    http.begin(serverPath.c_str()); // start connection to OpenWeatherMap URL
+    int httpResponseCode = http.GET(); //Sends a get request. 200 = OK, negtive = error
+
+    if (httpResponseCode > 0) {
+      String payload = http.getString(); // stores JSON response
+      Serial.println("Response:");
+      Serial.println(payload);  // prints raw JSON
+    } else {
+      Serial.print("Error code: "); //If request failed print error message
+      Serial.println(httpResponseCode);
+    }
+    http.end(); //Releases HUZZAH32's RAM reserved for http call
+  }
+//-------------------------------------------------------------------------------
+
+//--------------Displays Values------------------------------------------------
   display.clearBuffer();
   display.setTextSize(3);
   display.setCursor(20, 20);

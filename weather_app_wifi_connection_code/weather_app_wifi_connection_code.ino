@@ -4,9 +4,9 @@
 const char* ssid = ":)";
 const char* password = ";)";
 
-String apiKey = "4ee3315c56c51d147c7904087b06f12d";
-String latitude = "45.5202";
-String longitude = "-122.6742";
+String apiKey = "YOUR_APIKEY";
+String latitude = "CITY_LATITUDE";
+String longitude = "CITY_LONGITUDE";
 
 String serverPath = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey + "&units=metric";
 
