@@ -1,10 +1,11 @@
 #include <WiFi.h>
 #include<HTTPClient.h>
+#include <ArduinoJson.h>
 
-const char* ssid = ":)";
-const char* password = ";)";
+const char* ssid = "SSID";
+const char* password = "PASSWORD";
 
-String apiKey = "YOUR_APIKEY";
+String apiKey = "APIKEY";
 String latitude = "CITY_LATITUDE";
 String longitude = "CITY_LONGITUDE";
 
@@ -37,13 +38,39 @@ void loop() {
     int httpResponseCode = http.GET(); //Sends a get request. 200 = OK, negtive = error
 
     if (httpResponseCode > 0) {
-      String payload = http.getString(); // stores JSON response
-      Serial.println("Response:");
-      Serial.println(payload);  // prints raw JSON
+      String payload = http.getString();
+    
+      StaticJsonDocument<1024> doc;
+
+      // Parse JSON
+      DeserializationError error = deserializeJson(doc, payload);
+
+      if (!error) {
+        float temp = doc["main"]["temp"];
+        int humidity = doc["main"]["humidity"];
+        const char* description = doc["weather"][0]["description"];
+        const char* city = doc["name"];
+
+        Serial.println("Weather Data:");
+        Serial.print("City: ");
+        Serial.println(city);
+        Serial.print("Temperature: ");
+        Serial.print(temp);
+        Serial.println(" °C");
+        Serial.print("Humidity: ");
+        Serial.print(humidity);
+        Serial.println(" %");
+        Serial.print("Condition: ");
+        Serial.println(description);
+      } else {
+        Serial.print("JSON parsing failed: ");
+        Serial.println(error.c_str());
+      }
     } else {
-      Serial.print("Error code: "); //If request failed print error message
+      Serial.print("Error code: ");
       Serial.println(httpResponseCode);
     }
+
     http.end(); //Releases HUZZAH32's RAM reserved for http call
   }
   delay(60000); // wait 1 min before next request
