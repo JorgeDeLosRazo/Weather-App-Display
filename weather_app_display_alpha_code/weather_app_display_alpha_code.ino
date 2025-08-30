@@ -11,18 +11,20 @@
 #define EPD_RESET 27  // can set to -1 and share with microcontroller Reset!
 #define EPD_SPI &SPI // primary SPI
 
-const char* ssid = "SSID";
-const char* password = "PASSWORD";
+const char fullCityName[] = "Portland, OR";
 
-String apiKey = "APIKEY";
-String latitude = "CITY_LATITUDE";
-String longitude = "CITY_LONGITUDE";
+const char* ssid = "Mr. Spooch";
+const char* password = "Bacon9097famous2";
+
+String apiKey = "4ee3315c56c51d147c7904087b06f12d";
+String latitude = "45.5234";
+String longitude = "-122.6762";
 
 String serverPath = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey + "&units=metric";
 
 ThinkInk_370_Mono_BAAMFGN display(EPD_DC, EPD_RESET, EPD_CS, SRAM_CS, EPD_BUSY, EPD_SPI);
 
-void DisplayValuesOnEInk(float temp, int humidity, String description, String city);
+void DisplayValuesOnEInk(float temp, int humidity, String description);
 
 
 //Sun icon (100x100)
@@ -334,8 +336,7 @@ void loop() {
           float temp = doc["main"]["temp"];
           int humidity = doc["main"]["humidity"];
           String description = doc["weather"][0]["description"];
-          String city = doc["name"];
-          DisplayValuesOnEInk(temp, humidity, description, city);
+          DisplayValuesOnEInk(temp, humidity, description);
 
         } else {
           Serial.print("JSON parsing failed: ");
@@ -354,7 +355,7 @@ void loop() {
 
 
 
-void DisplayValuesOnEInk(float temp, int humidity, String description, String city){
+void DisplayValuesOnEInk(float temp, int humidity, String description){
 
   display.clearBuffer();
   display.setTextColor(EPD_BLACK); //Sets text of display to black
@@ -371,11 +372,8 @@ void DisplayValuesOnEInk(float temp, int humidity, String description, String ci
   }
 //-----------------------------------------------------------------------------
 
-
   display.setTextSize(3);
   display.setCursor(20, 20);
-	String  fullCityName = "";
-  fullCityName = city + ", CITY_STATE";
   display.println(fullCityName); //Displays City 
 
   display.setTextSize(4);
@@ -405,10 +403,6 @@ void DisplayValuesOnEInk(float temp, int humidity, String description, String ci
  
   display.display();
 }
-
-/*
-	Currently the description is not getting updated on the display and the correct bitmaps is not being outputted
-*/
 
 
 
