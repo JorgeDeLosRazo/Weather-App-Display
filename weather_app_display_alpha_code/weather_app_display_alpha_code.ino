@@ -11,14 +11,14 @@
 #define EPD_RESET 27  // can set to -1 and share with microcontroller Reset!
 #define EPD_SPI &SPI // primary SPI
 
-const char fullCityName[] = "Portland, OR";
+const char fullCityName[] = "CITY, STATE";
 
-const char* ssid = "Mr. Spooch";
-const char* password = "Bacon9097famous2";
+const char* ssid = "SSID";
+const char* password = "PASSWORD";
 
-String apiKey = "4ee3315c56c51d147c7904087b06f12d";
-String latitude = "45.5234";
-String longitude = "-122.6762";
+String apiKey = "APIKEY";
+String latitude = "CITY_LATITUDE";
+String longitude = "CITY_LONGITUDEr";
 
 String serverPath = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey + "&units=metric";
 
