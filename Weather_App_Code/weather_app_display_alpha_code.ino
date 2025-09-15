@@ -8,25 +8,25 @@
 #define EPD_DC 33
 #define EPD_CS 15
 #define EPD_BUSY 32 // can set to -1 to not use a pin (will wait a fixed delay)
-#define SRAM_CS 21
+#define SRAM_CS -1 //21 if you want
 #define EPD_RESET 27  // can set to -1 and share with microcontroller Reset!
 #define EPD_SPI &SPI // primary SPI
 
 const int displayRefreshRate = 900000;
 int timeIn24HourFormat = 0;
 
-const char fullCityName[] = "CITY, STATE";
+const char fullCityName[] = "Portland, OR";
 
-const char* ssid = "SSID";
-const char* password = "PASSWORD";
+const char* ssid = "Mr. Spooch";
+const char* password = "Bacon9097famous2";
 
 const char* ntpServer = "pool.ntp.org";
 const long gmtOffset_sec = -28800; //Set with the UTC time offset in seconds (https://en.wikipedia.org/wiki/List_of_UTC_offsets)
 const int  daylightOffset_sec = 3600; //Daylight savings offset time
 
-String apiKey = "APIKEY";
-String latitude = "CITY_LATITUDE";
-String longitude = "CITY_LONGITUDE";
+String apiKey = "4ee3315c56c51d147c7904087b06f12d";
+String latitude = "45.5234";
+String longitude = "-122.6762";
 
 String serverPath = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey + "&units=metric";
 
