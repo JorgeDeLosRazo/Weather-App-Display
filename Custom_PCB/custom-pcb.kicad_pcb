@@ -5029,7 +5029,7 @@
 		(layer "Edge.Cuts")
 		(uuid "c4f2e962-7759-4474-ad1b-6a38b8c99328")
 	)
-	(gr_text "Jorge De Los Santos Razo\n09/09/2025"
+	(gr_text "Jorge De Los Santos Razo\n09/15/2025"
 		(at 141 118.5 90)
 		(layer "F.SilkS")
 		(uuid "670840f2-1b8f-452f-a9d3-51a610d66b4c")
