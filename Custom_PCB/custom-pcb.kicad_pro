@@ -454,7 +454,7 @@
     ]
   },
   "meta": {
-    "filename": "custo-pcb.kicad_pro",
+    "filename": "custom-pcb.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -490,7 +490,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "C:/Users/jorge/OneDrive/Desktop/gerber",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",
