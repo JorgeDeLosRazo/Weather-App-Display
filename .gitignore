@@ -1,3 +1,4 @@
 *.kicad_prl
+*.lck
 custom-pcb-backups
 fp-info-cache
