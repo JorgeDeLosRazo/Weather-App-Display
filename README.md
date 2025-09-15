@@ -1,4 +1,4 @@
-# Weather App Display (Personal Project) 
+# Weather App Display
 
 ### Materials
 - Adafruit HUZZAH32 (ESP32 feather)
