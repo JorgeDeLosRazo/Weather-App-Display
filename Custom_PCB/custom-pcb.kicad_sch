@@ -4676,7 +4676,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "Adafruit eInk Breakout Friend:EINK_24PIN"
+		(property "Footprint" "Adafruit eInk Breakout Friend:FPC-SMD_P0.50-24P_XJ-FGS"
 			(at 207.01 143.51 0)
 			(effects
 				(font
