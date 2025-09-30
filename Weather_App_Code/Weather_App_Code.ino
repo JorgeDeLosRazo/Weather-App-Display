@@ -15,18 +15,18 @@
 const int displayRefreshRate = 900000;
 int timeIn24HourFormat = 0;
 
-const char fullCityName[] = "Portland, OR";
+const char fullCityName[] = "CITY_NAME";
 
-const char* ssid = "Mr. Spooch";
-const char* password = "Bacon9097famous2";
+const char* ssid = "SSID";
+const char* password = "PASSWORD";
 
 const char* ntpServer = "pool.ntp.org";
 const long gmtOffset_sec = -28800; //Set with the UTC time offset in seconds (https://en.wikipedia.org/wiki/List_of_UTC_offsets)
 const int  daylightOffset_sec = 3600; //Daylight savings offset time
 
-String apiKey = "4ee3315c56c51d147c7904087b06f12d";
-String latitude = "45.5234";
-String longitude = "-122.6762";
+String apiKey = "APIKEY";
+String latitude = "CITY_LATITUDE";
+String longitude = "CITY_LONGITUDEr";
 
 String serverPath = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey + "&units=metric";
 
